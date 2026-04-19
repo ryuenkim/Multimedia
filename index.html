@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimedia Portfolio - Kim Ryan B. Macaroncio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Floating Animated Shapes -->
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo-icon">📺</span>
+                <span class="brand-text">Multimedia Portfolio</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Multimedia & Authoring</h1>
+            <p class="hero-subtitle">Rotoscope and 3D Rendering</p>
+            <p class="hero-description">
+                Exploring the art of rotoscoping and the realm of 3D rendering to create compelling visual narratives. 
+                Merging creativity with technology to bring motion and dimension to digital storytelling.
+            </p>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="featured-projects">
+        <!-- Featured Image Background -->
+        <div class="featured-image" id="featured-image"></div>
+
+        <div class="projects-container">
+            <div class="projects-left">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-list">
+                    <!-- Project 1 -->
+                    <div class="project-card" data-bg="url('images/solarsystem.jpg')">
+                        <h3 class="project-title">
+                            <a href="project-solar-system.html">3D Solar System</a>
+                        </h3>
+                        <p class="project-category">3D RENDERING</p>
+                        <p class="project-description">
+                            3D rendering of planets involves creating realistic visual models of celestial bodies using computer graphics. 
+                            It simulates textures, lighting, and atmospheric effects to depict planets with scientific accuracy or artistic style.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Blender</span>
+                            <span class="tag">3D Modeling</span>
+                            <span class="tag">Python Script</span>
+                        </div>
+                        <div style="margin-top: auto; padding-top: 15px;">
+                            <a href="project-solar-system.html" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card" data-bg="url('images/rotoscope.jpg')">
+                        <h3 class="project-title">
+                            <a href="project-rotoscope.html">1-minute Video Rotoscope</a>
+                        </h3>
+                        <p class="project-category">ROTOSCOPE</p>
+                        <p class="project-description">
+                            Video rotoscoping is a technique where artists trace over footage frame by frame to isolate subjects or create visual effects. 
+                            It's commonly used for background removal, motion tracking, and stylized animation.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Adobe After Effects</span>
+                            <span class="tag">Adobe Premiere Pro</span>
+                            <span class="tag">Capcut</span>
+                        </div>
+                        <div style="margin-top: auto; padding-top: 15px;">
+                            <a href="project-rotoscope.html" class="btn btn-primary">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Image Area -->
+            <div class="projects-right">
+                <div class="featured-details" id="featured-details">
+                    <div class="details-content">
+                        <h3 class="details-title">Hover over a project</h3>
+                        <p class="details-category"></p>
+                        <p class="details-description">Select a project to view details</p>
+                        <div class="details-tags"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to top">↑</button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://linkedin.com" class="social-link" title="LinkedIn" target="_blank">in</a>
+                <a href="https://github.com" class="social-link" title="GitHub" target="_blank">⚙</a>
+                <a href="https://instagram.com" class="social-link" title="Instagram" target="_blank">📷</a>
+                <a href="mailto:contact@example.com" class="social-link" title="Email">✉</a>
+            </div>
+            <p>&copy; 2026 Kim Ryan B. Macaroncio (BSIT-NS-2A-T). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
