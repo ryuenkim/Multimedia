@@ -28,8 +28,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-bg-alt) 100%);
-    background-attachment: fixed;
+    background: #0a0e27;
     color: var(--text-primary);
     line-height: 1.6;
     animation: fadeIn 0.8s ease-out;
@@ -178,6 +177,39 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutToLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+}
+
+@keyframes slideInTitleFromLeft {
+    from {
+        opacity: 0;
+        margin-left: calc(50% - 50px);
+    }
+    to {
+        opacity: 1;
+        margin-left: 50%;
     }
 }
 
@@ -382,52 +414,41 @@ html {
    =========================== */
 
 .hero {
-    padding: 120px 0;
+    padding: 120px 50px;
     text-align: center;
-    background: linear-gradient(135deg, rgba(10, 14, 39, 0.8) 0%, rgba(26, 31, 58, 0.6) 50%, rgba(10, 14, 39, 0.8) 100%), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,212,255,0.03)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+    background: #0a0e27;
     position: relative;
     overflow: hidden;
-    animation: slideInUp 0.8s ease-out;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.hero.slide-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero.slide-out {
+    opacity: 0;
+    transform: translateY(-50px);
 }
 
 .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.5) 50%, transparent 100%);
-    animation: dividerReveal 0.8s ease-out 0.4s backwards;
+    display: none;
 }
 
 .hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(40px);
-    z-index: -1;
+    display: none;
 }
 
 .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -50%;
-    left: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(181, 55, 242, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(40px);
-    z-index: -1;
+    display: none;
 }
 
 .hero-title {
@@ -437,8 +458,8 @@ html {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 15px;
-    animation: glow 3s ease-in-out infinite, slideInUp 0.8s ease-out;
+    margin-bottom: 30px;
+    animation: slideInUp 0.8s ease-out;
     letter-spacing: -2px;
 }
 
@@ -448,7 +469,7 @@ html {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 25px;
+    margin-bottom: 40px;
     font-weight: 600;
 }
 
@@ -472,29 +493,25 @@ html {
     margin-bottom: 4rem;
     display: inline-block;
     margin-left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(calc(-50% - 50px));
     position: relative;
     letter-spacing: -1px;
-}
-
-.section-title::before {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
-    border-radius: 2px;
-}
-
-.section-title {
     background: linear-gradient(135deg, var(--primary-color), var(--accent-purple));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: slideInUp 0.8s ease-out;
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-title.slide-in {
+    opacity: 1;
+    transform: translateX(-50%);
+}
+
+.section-title.slide-out {
+    opacity: 0;
+    transform: translateX(calc(-50% - 50px));
 }
 
 section {
@@ -507,8 +524,8 @@ section {
    =========================== */
 
 .featured-projects {
-    background: linear-gradient(180deg, var(--dark-bg) 0%, rgba(15, 22, 41, 0.5) 100%);
-    padding: 80px 50px;
+    background: #0a0e27;
+    padding: 100px 50px;
     position: relative;
     overflow: visible;
     transition: background 0.5s ease;
@@ -516,20 +533,12 @@ section {
     min-height: 700px;
 }
 
-.featured-projects::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.5) 50%, transparent 100%);
-    animation: dividerReveal 0.8s ease-out 0.6s backwards;
+.featured-projects::after {
+    display: none;
 }
 
 .featured-projects.image-active {
-    background: rgba(10, 14, 39, 0.05);
+    background: #0a0e27;
 }
 
 .projects-container {
@@ -580,7 +589,7 @@ section {
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
     z-index: 1;
     pointer-events: none;
@@ -599,7 +608,7 @@ section {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(10, 14, 39, 0.8) 0%, rgba(10, 14, 39, 0.4) 50%, rgba(10, 14, 39, 0.2) 100%);
+    background: linear-gradient(180deg, rgba(10, 14, 39, 1) 0%, rgba(10, 14, 39, 1) 10%, rgba(10, 14, 39, 0.1) 50%, rgba(10, 14, 39, 1) 90%, rgba(10, 14, 39, 1) 100%);
     z-index: 3;
     pointer-events: none;
 }
@@ -622,7 +631,6 @@ section {
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 0.5s ease;
     z-index: 3;
     pointer-events: none;
     display: flex;
@@ -630,7 +638,7 @@ section {
     justify-content: center;
     padding: 40px;
     transform: translateX(50px);
-    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .featured-details.active {
@@ -693,6 +701,30 @@ section {
     padding: 100px 0;
     background: linear-gradient(180deg, var(--dark-bg) 0%, rgba(15, 22, 41, 0.5) 100%);
     position: relative;
+    overflow: hidden;
+}
+
+.portfolio-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.portfolio-bg-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10, 14, 39, 0.85) 0%, rgba(10, 14, 39, 0.7) 50%, rgba(10, 14, 39, 0.85) 100%);
+    z-index: 2;
 }
 
 .portfolio-section::before {
@@ -705,6 +737,12 @@ section {
     height: 1px;
     background: linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.5) 50%, transparent 100%);
     animation: dividerReveal 0.8s ease-out 0.6s backwards;
+    z-index: 10;
+}
+
+.portfolio-section .container {
+    position: relative;
+    z-index: 3;
 }
 
 .portfolio-section .section-title {
@@ -725,11 +763,25 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     background: rgba(26, 31, 58, 0.5);
-    border: 1px solid rgba(0, 212, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 212, 255, 0.15);
     border-radius: 16px;
     overflow: hidden;
-    transition: all 0.4s ease;
-    animation: slideInUp 0.6s ease-out backwards;
+    transition: all 0.4s ease, opacity 0.6s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateX(-50px);
+    cursor: pointer;
+    position: relative;
+}
+
+.portfolio-card.slide-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.portfolio-card.slide-out {
+    opacity: 0;
+    transform: translateX(-50px);
 }
 
 .portfolio-card:nth-child(1) {
@@ -742,9 +794,26 @@ section {
 
 .portfolio-card:hover {
     background: rgba(26, 31, 58, 0.7);
-    border-color: rgba(0, 212, 255, 0.3);
-    box-shadow: 0 10px 40px rgba(0, 212, 255, 0.1);
-    transform: translateY(-5px);
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2), inset 0 0 20px rgba(0, 212, 255, 0.05);
+    transform: translateX(0) translateY(-5px);
+}
+
+.portfolio-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.portfolio-card:hover::before {
+    left: 100%;
 }
 
 .portfolio-image {
@@ -757,6 +826,15 @@ section {
     overflow: hidden;
     transition: transform 0.4s ease;
     position: relative;
+}
+
+.portfolio-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, transparent 70%, rgba(10, 14, 39, 0.6) 100%);
+    pointer-events: none;
+    z-index: 2;
 }
 
 .portfolio-image::after {
@@ -821,17 +899,19 @@ section {
 }
 
 .portfolio-tags .tag:hover {
-    background: rgba(0, 212, 255, 0.2);
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+    background: rgba(0, 212, 255, 0.25);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+    transform: scale(1.12);
+    border-color: rgba(0, 212, 255, 0.8);
 }
 
 .project-card {
-    background: rgba(26, 31, 58, 0.6);
+    background: rgba(26, 31, 58, 0.5);
     backdrop-filter: blur(10px);
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid rgba(0, 212, 255, 0.15);
-    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+    transition: transform 0.4s ease, opacity 0.6s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
     padding: 25px;
     display: flex;
     flex-direction: column;
@@ -839,13 +919,28 @@ section {
     min-height: 180px;
     cursor: pointer;
     position: relative;
-    animation: slideInUp 0.6s ease-out backwards;
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.project-card.slide-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.project-card.slide-out {
+    opacity: 0;
+    transform: translateX(-50px);
 }
 
 .project-card:hover {
-    border-color: rgba(0, 212, 255, 0.5);
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(0, 212, 255, 0.1);
-    transform: translateY(-5px);
+    transform: translateX(0) translateY(-5px);
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2), inset 0 0 20px rgba(0, 212, 255, 0.05);
+}
+
+.project-card:hover::before {
+    left: 100%;
 }
 
 .project-card:nth-child(1) {
@@ -857,10 +952,10 @@ section {
 }
 
 .featured-projects.image-active .project-card {
-    background: rgba(26, 31, 58, 0.7);
+    background: rgba(26, 31, 58, 0.4);
     backdrop-filter: blur(10px);
-    border-color: rgba(0, 212, 255, 0.5);
-    transition: background 0.5s ease, border-color 0.5s ease, backdrop-filter 0.5s ease;
+    border-color: rgba(0, 212, 255, 0.15);
+    transition: transform 0.4s ease;
 }
 
 .featured-projects .project-card .project-category,
@@ -1016,7 +1111,7 @@ section {
     font-size: 0.8rem;
     border: 1px solid rgba(0, 212, 255, 0.25);
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     cursor: pointer;
 }
 
@@ -1024,7 +1119,7 @@ section {
     background: linear-gradient(135deg, rgba(0, 212, 255, 0.4), rgba(181, 55, 242, 0.3));
     border-color: rgba(0, 212, 255, 0.8);
     box-shadow: 0 0 25px rgba(0, 212, 255, 0.5), inset 0 0 10px rgba(0, 212, 255, 0.15);
-    transform: scale(1.08) translateY(-3px);
+    transform: scale(1.12) translateY(-4px);
     color: #fff;
 }
 
@@ -1088,12 +1183,13 @@ section {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--dark-bg);
     box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+    transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
     animation: buttonGlow 1.5s ease-in-out infinite;
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.4);
 }
 
 .btn-secondary {
@@ -1492,16 +1588,23 @@ section {
    =========================== */
 
 .footer {
-    background: linear-gradient(180deg, transparent 0%, rgba(10, 14, 39, 0.8) 100%);
-    border-top: 1px solid rgba(0, 212, 255, 0.1);
+    background: #0a0e27;
     padding: 50px 0;
     text-align: center;
     color: var(--text-secondary);
-    transition: all 0.4s ease;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 0;
+    transform: translateY(50px);
 }
 
-.footer:hover {
-    border-top-color: rgba(0, 212, 255, 0.2);
+.footer.slide-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer.slide-out {
+    opacity: 0;
+    transform: translateY(50px);
 }
 
 .footer p {
@@ -1633,6 +1736,7 @@ section {
 @media (max-width: 768px) {
     .hero {
         padding: 60px 20px;
+        min-height: 100vh;
     }
 
     .hero-title {
@@ -1757,6 +1861,7 @@ section {
 @media (max-width: 480px) {
     .hero {
         padding: 40px 15px;
+        min-height: 100vh;
     }
 
     .hero-title {
@@ -1988,8 +2093,9 @@ section {
 .hero {
     padding: 100px 0;
     text-align: center;
-    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
-    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+    background: #0a0e27;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-title {
@@ -2353,8 +2459,7 @@ section {
    =========================== */
 
 .footer {
-    background-color: rgba(10, 14, 39, 0.8);
-    border-top: 1px solid rgba(0, 212, 255, 0.1);
+    background: #0a0e27;
     padding: 40px 0;
     text-align: center;
     color: var(--text-secondary);

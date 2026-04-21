@@ -26,38 +26,50 @@ document.addEventListener('DOMContentLoaded', () => {
         if (link && bgImage && featuredImage) {
             const href = link.getAttribute('href');
             
-            // On hover: show featured image and details
+            // On hover: show featured image and details with smooth dissolve transition
             card.addEventListener('mouseenter', function() {
                 console.log('Mouse enter - Setting background:', bgImage);
-                // Set background-image
-                featuredImage.style.backgroundImage = bgImage;
-                featuredImage.classList.add('active');
-                featuredSection.classList.add('image-active');
                 
-                // Update details
-                if (featuredDetails) {
-                    const detailsTitle = featuredDetails.querySelector('.details-title');
-                    const detailsCategory = featuredDetails.querySelector('.details-category');
-                    const detailsDescription = featuredDetails.querySelector('.details-description');
-                    const detailsTags = featuredDetails.querySelector('.details-tags');
+                // Fade out current image
+                featuredImage.classList.remove('active');
+                
+                // Wait for fade-out to complete, then change image and fade in
+                setTimeout(() => {
+                    // Set new background-image
+                    featuredImage.style.backgroundImage = bgImage;
+                    featuredSection.classList.add('image-active');
                     
-                    if (detailsTitle) detailsTitle.textContent = title;
-                    if (detailsCategory) detailsCategory.textContent = category;
-                    if (detailsDescription) detailsDescription.textContent = description;
+                    // Fade in new image
+                    featuredImage.classList.add('active');
                     
-                    if (detailsTags) {
-                        detailsTags.innerHTML = tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+                    // Update details with smooth transition
+                    if (featuredDetails) {
+                        const detailsTitle = featuredDetails.querySelector('.details-title');
+                        const detailsCategory = featuredDetails.querySelector('.details-category');
+                        const detailsDescription = featuredDetails.querySelector('.details-description');
+                        const detailsTags = featuredDetails.querySelector('.details-tags');
+                        
+                        if (detailsTitle) detailsTitle.textContent = title;
+                        if (detailsCategory) detailsCategory.textContent = category;
+                        if (detailsDescription) detailsDescription.textContent = description;
+                        
+                        if (detailsTags) {
+                            detailsTags.innerHTML = tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+                        }
+                        
+                        // Only fade in details if not already active
+                        if (!featuredDetails.classList.contains('active')) {
+                            featuredDetails.classList.add('active');
+                        }
                     }
                     
-                    featuredDetails.classList.add('active');
-                }
-                
-                console.log('Featured image and details displayed');
+                    console.log('Featured image and details displayed with dissolve transition');
+                }, 300); // Match fade-out duration
             });
             
-            // On mouse leave: hide featured image and details
+            // On mouse leave: hide featured image and details with soft fade
             card.addEventListener('mouseleave', function() {
-                console.log('Mouse leave - Removing background');
+                console.log('Mouse leave - Fading out background');
                 featuredImage.classList.remove('active');
                 featuredSection.classList.remove('image-active');
                 if (featuredDetails) {
@@ -73,6 +85,48 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = href;
             });
         }
+    });
+});
+
+// =====================================================
+// Portfolio Background Image on Card Hover
+// =====================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const portfolioBgImage = document.getElementById('portfolioBgImage');
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+    if (!portfolioBgImage || portfolioCards.length === 0) return;
+
+    let currentCard = null;
+
+    portfolioCards.forEach((card) => {
+        card.addEventListener('mouseenter', function() {
+            const imageElement = card.querySelector('.portfolio-image');
+            if (imageElement && card !== currentCard) {
+                const bgImage = window.getComputedStyle(imageElement).backgroundImage;
+
+                // Dissolve effect: fade to halfway, change image, fade back
+                portfolioBgImage.style.transition = 'opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                portfolioBgImage.style.opacity = '0.5';
+
+                setTimeout(() => {
+                    // Change background image at midpoint of fade
+                    portfolioBgImage.style.backgroundImage = bgImage;
+                    portfolioBgImage.style.opacity = '1';
+                }, 300);
+
+                currentCard = card;
+            }
+        });
+
+        card.addEventListener('mouseleave', function() {
+            if (card === currentCard) {
+                portfolioBgImage.style.transition = 'opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                portfolioBgImage.style.opacity = '0';
+                currentCard = null;
+            }
+        });
     });
 });
 
@@ -100,6 +154,59 @@ window.addEventListener('scroll', () => {
 // Create progress bar on load
 document.addEventListener('DOMContentLoaded', () => {
     createProgressBar();
+});
+
+// =====================================================
+// Scroll-Triggered Animations for Project Cards & Titles
+// =====================================================
+
+const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Element entering viewport
+            entry.target.classList.remove('slide-out');
+            entry.target.classList.add('slide-in');
+        } else {
+            // Element leaving viewport (scrolling up)
+            entry.target.classList.remove('slide-in');
+            entry.target.classList.add('slide-out');
+        }
+    });
+}, {
+    threshold: 0.2,
+    rootMargin: '0px'
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Observe hero for scroll-triggered animations
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        cardObserver.observe(hero);
+    }
+
+    // Observe all project cards for scroll-triggered animations
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+        cardObserver.observe(card);
+    });
+
+    // Observe all portfolio cards for scroll-triggered animations
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
+    portfolioCards.forEach(card => {
+        cardObserver.observe(card);
+    });
+
+    // Observe section titles for scroll-triggered animations
+    const sectionTitles = document.querySelectorAll('.section-title');
+    sectionTitles.forEach(title => {
+        cardObserver.observe(title);
+    });
+
+    // Observe footer for scroll-triggered animations
+    const footer = document.querySelector('.footer');
+    if (footer) {
+        cardObserver.observe(footer);
+    }
 });
 
 // =====================================================
