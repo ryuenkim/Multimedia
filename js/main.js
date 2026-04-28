@@ -1,19 +1,22 @@
 // =====================================================
-// Featured Image Display on Card Hover
+// Featured Video Display on Card Hover
 // =====================================================
 
 document.addEventListener('DOMContentLoaded', () => {
     const projectCards = document.querySelectorAll('.project-card');
-    const featuredImage = document.getElementById('featured-image');
+    const featuredVideo = document.getElementById('featured-video');
+    const featuredVideoContainer = document.getElementById('featured-video-container');
     const featuredDetails = document.getElementById('featured-details');
     const featuredSection = document.querySelector('.featured-projects');
     
-    console.log('Featured image element found:', featuredImage);
+    console.log('Featured video element found:', featuredVideo);
+    console.log('Featured video container found:', featuredVideoContainer);
     console.log('Featured details element found:', featuredDetails);
     console.log('Number of project cards:', projectCards.length);
     
     projectCards.forEach((card, index) => {
         const link = card.querySelector('a[href*="project-"]');
+        const videoSrc = card.getAttribute('data-video');
         const bgImage = card.getAttribute('data-bg');
         const title = card.querySelector('.project-title a')?.textContent || '';
         const category = card.querySelector('.project-category')?.textContent || '';
@@ -21,26 +24,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const tagsContainer = card.querySelector('.project-tags');
         const tags = tagsContainer ? Array.from(tagsContainer.querySelectorAll('.tag')).map(tag => tag.textContent) : [];
         
-        console.log(`Card ${index}:`, {link: !!link, bgImage: bgImage, title, category});
+        console.log(`Card ${index}:`, {link: !!link, videoSrc: videoSrc, bgImage: bgImage, title, category});
         
-        if (link && bgImage && featuredImage) {
+        if (link && (videoSrc || bgImage) && featuredVideo && featuredDetails && featuredVideoContainer) {
             const href = link.getAttribute('href');
             
-            // On hover: show featured image and details with smooth dissolve transition
+            // On hover: show featured video/image and details with smooth dissolve transition
             card.addEventListener('mouseenter', function() {
-                console.log('Mouse enter - Setting background:', bgImage);
+                console.log('Mouse enter - Setting media:', videoSrc || bgImage);
                 
-                // Fade out current image
-                featuredImage.classList.remove('active');
+                // Fade out current media
+                featuredVideoContainer.classList.remove('active');
                 
-                // Wait for fade-out to complete, then change image and fade in
+                // Wait for fade-out to complete, then change media and fade in
                 setTimeout(() => {
-                    // Set new background-image
-                    featuredImage.style.backgroundImage = bgImage;
+                    if (videoSrc) {
+                        // Set video source
+                        featuredVideo.src = videoSrc;
+                        featuredVideo.play().catch(e => console.log('Video play error:', e));
+                    } else if (bgImage) {
+                        // Fallback to image if no video
+                        featuredVideo.style.backgroundImage = bgImage;
+                        featuredVideo.src = '';
+                    }
+                    
                     featuredSection.classList.add('image-active');
                     
-                    // Fade in new image
-                    featuredImage.classList.add('active');
+                    // Fade in new media
+                    featuredVideoContainer.classList.add('active');
                     
                     // Update details with smooth transition
                     if (featuredDetails) {
@@ -63,14 +74,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
                     
-                    console.log('Featured image and details displayed with dissolve transition');
+                    console.log('Featured media and details displayed with dissolve transition');
                 }, 300); // Match fade-out duration
             });
             
-            // On mouse leave: hide featured image and details with soft fade
+            // On mouse leave: hide featured media and details with soft fade
             card.addEventListener('mouseleave', function() {
-                console.log('Mouse leave - Fading out background');
-                featuredImage.classList.remove('active');
+                console.log('Mouse leave - Fading out media');
+                featuredVideoContainer.classList.remove('active');
+                featuredVideo.pause();
                 featuredSection.classList.remove('image-active');
                 if (featuredDetails) {
                     featuredDetails.classList.remove('active');
