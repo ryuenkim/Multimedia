@@ -202,6 +202,17 @@ body {
     }
 }
 
+@keyframes slideOutDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}
+
 @keyframes slideInTitleFromLeft {
     from {
         opacity: 0;
@@ -1395,6 +1406,401 @@ section {
 
 .project-detail ol li strong {
     color: var(--primary-color);
+}
+
+/* ===========================
+   Celestial Grid & Cards
+   =========================== */
+
+.celestial-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin: 40px 0;
+    animation: slideInUp 0.8s ease-out 0.3s backwards;
+}
+
+.celestial-card {
+    background: linear-gradient(135deg, rgba(26, 31, 58, 0.6), rgba(37, 45, 74, 0.4));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 212, 255, 0.15);
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: none;
+}
+
+.celestial-card.slide-in {
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+.celestial-card.slide-out {
+    animation: slideOutDown 0.6s ease-out forwards;
+}
+
+.celestial-card:nth-child(1) {
+    animation-delay: none;
+}
+
+.celestial-card:nth-child(2) {
+    animation-delay: none;
+}
+
+.celestial-card:nth-child(3) {
+    animation-delay: none;
+}
+
+.celestial-card:nth-child(4) {
+    animation-delay: none;
+}
+
+.celestial-card:nth-child(5) {
+    animation-delay: none;
+}
+
+.celestial-card:nth-child(6) {
+    animation-delay: none;
+}
+
+.celestial-card:nth-child(7) {
+    animation-delay: none;
+}
+
+.celestial-card:nth-child(8) {
+    animation-delay: none;
+}
+
+.celestial-card:nth-child(9) {
+    animation-delay: none;
+}
+
+.celestial-card:nth-child(10) {
+    animation-delay: none;
+}
+
+.celestial-card-featured {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(181, 55, 242, 0.08));
+    border: 2px solid rgba(0, 212, 255, 0.25);
+}
+
+.celestial-card-featured:hover {
+    border-color: rgba(0, 212, 255, 0.6);
+    box-shadow: 0 12px 48px rgba(0, 212, 255, 0.25), inset 0 1px 0 rgba(0, 212, 255, 0.3);
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(181, 55, 242, 0.15));
+}
+
+.celestial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+    z-index: 10;
+    pointer-events: none;
+    border-radius: 12px;
+}
+
+.celestial-card:hover {
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2), inset 0 0 20px rgba(0, 212, 255, 0.05);
+    transform: translateY(-8px) perspective(1000px) rotateX(2deg) rotateY(-1deg);
+    background: linear-gradient(135deg, rgba(26, 31, 58, 0.7), rgba(37, 45, 74, 0.5));
+}
+
+.celestial-card:hover::before {
+    left: 100%;
+}
+
+/* Orbit Badge */
+.orbit-badge {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.9), rgba(181, 55, 242, 0.7));
+    color: white;
+    padding: 6px 14px;
+    border-radius: 0 0 8px 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-top: none;
+    z-index: 15;
+    animation: orbitPulse 3s ease-in-out infinite;
+}
+
+@keyframes orbitPulse {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.6), 0 0 30px rgba(181, 55, 242, 0.3);
+        transform: translateX(-50%) scale(1.05);
+    }
+}
+
+/* Planet-specific left border colors */
+.planet-sun {
+    border-left: 4px solid #FDB813;
+}
+
+.planet-mercury {
+    border-left: 4px solid #8C7853;
+}
+
+.planet-venus {
+    border-left: 4px solid #FFC649;
+}
+
+.planet-earth {
+    border-left: 4px solid #4A90E2;
+}
+
+.planet-moon {
+    border-left: 4px solid #C0C0C0;
+}
+
+.planet-mars {
+    border-left: 4px solid #E27B58;
+}
+
+.planet-jupiter {
+    border-left: 4px solid #C88B3A;
+}
+
+.planet-saturn {
+    border-left: 4px solid #F5D547;
+}
+
+.planet-uranus {
+    border-left: 4px solid #4FD0E7;
+}
+
+.planet-neptune {
+    border-left: 4px solid #4166F5;
+}
+
+.planet-pluto {
+    border-left: 4px solid #9D9D9D;
+}
+
+.celestial-header {
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.celestial-card:hover .celestial-header {
+    transform: translateX(5px);
+}
+
+.celestial-header h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    letter-spacing: -0.5px;
+    transition: all 0.3s ease;
+}
+
+.celestial-card:hover .celestial-header h4 {
+    filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+}
+
+.celestial-video-container {
+    width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 212, 255, 0.1);
+    z-index: 2;
+    aspect-ratio: 16/9;
+    background: var(--dark-bg-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+}
+
+.celestial-card:hover .celestial-video-container {
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
+}
+
+.portrait-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.celestial-card:hover .portrait-video {
+    transform: scale(1.02);
+}
+
+.portrait-video-sun {
+    transform: scale(1);
+}
+
+.portrait-video-mercury {
+    transform: scale(1.5);
+}
+
+.portrait-video-venus {
+    transform: scale(1.2);
+}
+
+.portrait-video-earth {
+    transform: scale(1.35);
+}
+
+.portrait-video-moon {
+    transform: scale(1.5);
+}
+
+.celestial-youtube-link {
+    margin: 12px 0;
+    text-align: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.celestial-youtube-link a {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    background: rgba(0, 212, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.celestial-youtube-link a:hover {
+    background: rgba(0, 212, 255, 0.2);
+    text-decoration: none;
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.celestial-info {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex-grow: 1;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.celestial-card:hover .celestial-info {
+    color: var(--text-primary);
+}
+
+.celestial-info p {
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.celestial-info strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.calculator-section {
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: none;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.calculator-section.slide-in {
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+.calculator-section.slide-out {
+    animation: slideOutDown 0.6s ease-out forwards;
+}
+
+.calculator-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.15), transparent);
+    transition: left 0.5s ease;
+    z-index: 10;
+    pointer-events: none;
+    border-radius: 16px;
+}
+
+.calculator-section:hover::before {
+    left: 100%;
+}
+
+.calculator-section:hover {
+    border-color: rgba(0, 212, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+}
+
+#calculation-results {
+    background: rgba(26, 31, 58, 0.8);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    animation: slideInUp 0.4s ease-out;
+    backdrop-filter: blur(10px);
+}
+
+#results-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+#results-content > div {
+    padding: 15px;
+    background: rgba(0, 212, 255, 0.05);
+    border-left: 3px solid var(--primary-color);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#results-content > div:hover {
+    background: rgba(0, 212, 255, 0.1);
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.15);
+}
+
+#results-content > div strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 5px;
 }
 
 /* ===========================

@@ -207,6 +207,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (footer) {
         cardObserver.observe(footer);
     }
+
+    // Observe all celestial cards for scroll-triggered animations
+    const celestialCards = document.querySelectorAll('.celestial-card');
+    celestialCards.forEach(card => {
+        cardObserver.observe(card);
+    });
+
+    // Observe calculator section for scroll-triggered animations
+    const calculatorSection = document.querySelector('.calculator-section');
+    if (calculatorSection) {
+        cardObserver.observe(calculatorSection);
+    }
 });
 
 // =====================================================
@@ -363,9 +375,135 @@ document.addEventListener('mouseleave', () => {
 });
 
 // =====================================================
+// Solar System Calculator
+// =====================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const calculateBtn = document.getElementById('calculate-btn');
+    const earthYearsInput = document.getElementById('earth-years');
+    const calculationResults = document.getElementById('calculation-results');
+    const resultsContent = document.getElementById('results-content');
+
+    // Planet orbital data (years per orbit around the sun)
+    const planets = {
+        'Mercury': { orbitalPeriod: 0.24, distance: 57.9, moons: 0, icon: '☿️' },
+        'Venus': { orbitalPeriod: 0.62, distance: 108.2, moons: 0, icon: '♀️' },
+        'Earth': { orbitalPeriod: 1.0, distance: 149.6, moons: 1, icon: '♁️' },
+        'Mars': { orbitalPeriod: 1.88, distance: 227.9, moons: 2, icon: '♂️' },
+        'Jupiter': { orbitalPeriod: 11.86, distance: 778.5, moons: 95, icon: '♃️' },
+        'Saturn': { orbitalPeriod: 29.46, distance: 1434.0, moons: 146, icon: '♄️' },
+        'Uranus': { orbitalPeriod: 84.01, distance: 2871.0, moons: 27, icon: '♅️' },
+        'Neptune': { orbitalPeriod: 164.79, distance: 4495.1, moons: 16, icon: '♆️' },
+        'Pluto': { orbitalPeriod: 248.0, distance: 5906.4, moons: 5, icon: '♇️' }
+    };
+
+    if (calculateBtn && earthYearsInput) {
+        calculateBtn.addEventListener('click', () => {
+            const earthYears = parseFloat(earthYearsInput.value);
+
+            if (isNaN(earthYears) || earthYears <= 0) {
+                resultsContent.innerHTML = '<p style="color: var(--accent-pink);">Please enter a valid positive number</p>';
+                calculationResults.style.display = 'block';
+                return;
+            }
+
+            // Calculate revolutions and orbital data for each planet
+            let html = '';
+            for (const [planet, data] of Object.entries(planets)) {
+                const revolutions = (earthYears / data.orbitalPeriod).toFixed(2);
+                const distanceInAU = (data.distance / 149.6).toFixed(2);
+                
+                html += `
+                    <div style="border-left-width: 4px; border-left-style: solid; transition: all 0.3s ease; padding: 16px;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <span style="font-size: 1.4rem;">${data.icon}</span>
+                            <strong style="font-size: 1.1rem;">${planet}</strong>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.9rem;">
+                            <p><span style="opacity: 0.7;">Revolutions:</span> <span style="color: var(--primary-color); font-weight: 600;">${revolutions}</span></p>
+                            <p><span style="opacity: 0.7;">Period:</span> <span style="color: var(--primary-color); font-weight: 600;">${data.orbitalPeriod} years</span></p>
+                            <p><span style="opacity: 0.7;">Distance:</span> <span style="color: var(--primary-color); font-weight: 600;">${data.distance}M km</span></p>
+                            <p><span style="opacity: 0.7;">AU:</span> <span style="color: var(--primary-color); font-weight: 600;">${distanceInAU}</span></p>
+                            <p><span style="opacity: 0.7;">Moons:</span> <span style="color: var(--primary-color); font-weight: 600;">${data.moons}</span></p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            resultsContent.innerHTML = html;
+            calculationResults.style.display = 'block';
+
+            // Smooth scroll to results
+            setTimeout(() => {
+                calculationResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        });
+
+        // Allow Enter key to trigger calculation
+        earthYearsInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                calculateBtn.click();
+            }
+        });
+    }
+});
+
+// =====================================================
 // Page Load Animation
 // =====================================================
 
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
 });
+
+// =====================================================
+// Scroll Animations & Parallax Effect
+// =====================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Intersection Observer for scroll-triggered animations
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('slide-in');
+                entry.target.classList.remove('slide-out');
+            } else {
+                entry.target.classList.remove('slide-in');
+                entry.target.classList.add('slide-out');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all celestial cards and calculator section
+    const celestialCards = document.querySelectorAll('.celestial-card');
+    const calculatorSection = document.querySelector('.calculator-section');
+    
+    celestialCards.forEach(card => {
+        observer.observe(card);
+    });
+    
+    if (calculatorSection) {
+        observer.observe(calculatorSection);
+    }
+
+    // Parallax effect for calculator section
+    const calculatorParallax = document.querySelector('.calculator-section');
+    
+    if (calculatorParallax) {
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const elementPosition = calculatorParallax.getBoundingClientRect().top + window.scrollY;
+            const scrollPercent = (scrollPosition - (elementPosition - window.innerHeight)) / window.innerHeight;
+            
+            // Apply parallax transform (slower scroll = 30px offset)
+            const parallaxOffset = scrollPercent * 30;
+            calculatorParallax.style.transform = `translateY(${parallaxOffset}px)`;
+        });
+    }
+});
+
