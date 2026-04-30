@@ -1498,43 +1498,43 @@ section {
 }
 
 .celestial-card:nth-child(1) {
-    animation-delay: none;
+    animation-delay: 0.2s;
 }
 
 .celestial-card:nth-child(2) {
-    animation-delay: none;
+    animation-delay: 0.4s;
 }
 
 .celestial-card:nth-child(3) {
-    animation-delay: none;
+    animation-delay: 0.6s;
 }
 
 .celestial-card:nth-child(4) {
-    animation-delay: none;
+    animation-delay: 0.8s;
 }
 
 .celestial-card:nth-child(5) {
-    animation-delay: none;
+    animation-delay: 1s;
 }
 
 .celestial-card:nth-child(6) {
-    animation-delay: none;
+    animation-delay: 1.2s;
 }
 
 .celestial-card:nth-child(7) {
-    animation-delay: none;
+    animation-delay: 1.4s;
 }
 
 .celestial-card:nth-child(8) {
-    animation-delay: none;
+    animation-delay: 1.6s;
 }
 
 .celestial-card:nth-child(9) {
-    animation-delay: none;
+    animation-delay: 1.8s;
 }
 
 .celestial-card:nth-child(10) {
-    animation-delay: none;
+    animation-delay: 2s;
 }
 
 .celestial-card-featured {
