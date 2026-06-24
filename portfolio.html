@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Multimedia & Authoring</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Page Background Video -->
+    <video id="page-bg-video" class="page-bg-video" autoplay muted loop playsinline>
+        <source src="videos/bg12.mp4" type="video/mp4">
+    </video>
+
+    <!-- Floating Animated Shapes -->
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo-icon">[M]</span>
+                <span class="brand-text">Multimedia Portfolio</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Portfolio Projects -->
+    <section class="portfolio-section">
+        <!-- Background Image Overlay -->
+        <div class="portfolio-bg-image" id="portfolioBgImage"></div>
+        
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="portfolio-card">
+                    <video class="portfolio-image portfolio-video" muted loop playsinline>
+                        <source src="videos/planetbg.mp4" type="video/mp4">
+                    </video>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">3D Solar System</h3>
+                        <p class="portfolio-category">3D RENDERING</p>
+                        <p class="portfolio-description">
+                            3D rendering of planets involves creating realistic visual models of celestial bodies using computer graphics. It simulates textures, lighting, and atmospheric effects to depict planets with scientific accuracy or artistic style.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Blender</span>
+                            <span class="tag">3D Modeling</span>
+                            <span class="tag">Python Script</span>
+                        </div>
+                        <a href="project-solar-system.html" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-card">
+                    <video class="portfolio-image portfolio-video" muted loop playsinline>
+                        <source src="roto/kim1.mp4" type="video/mp4">
+                    </video>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">1-minute Video Rotoscope</h3>
+                        <p class="portfolio-category">ROTOSCOPE</p>
+                        <p class="portfolio-description">
+                            Video rotoscoping is a technique where artists trace over footage frame by frame to isolate subjects or create visual effects. It's commonly used for background removal, motion tracking, and stylized animation.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Adobe After Effects</span>
+                            <span class="tag">Adobe Premiere Pro</span>
+                            <span class="tag">Capcut</span>
+                        </div>
+                        <a href="project-rotoscope.html" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-fixed">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Follow</h4>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank" title="LinkedIn"><img src="icons/icons8-linkedin-50 (1).png" alt="LinkedIn" style="width: 24px; height: 24px;"></a>
+                        <a href="https://github.com" target="_blank" title="GitHub"><img src="icons/icons8-github-50 (1).png" alt="GitHub" style="width: 24px; height: 24px;"></a>
+                        <a href="https://instagram.com" target="_blank" title="Instagram"><img src="icons/icons8-instagram-logo-50.png" alt="Instagram" style="width: 24px; height: 24px;"></a>
+                        <a href="mailto:contact@example.com" title="Email"><img src="icons/icons8-email-50.png" alt="Email" style="width: 24px; height: 24px;"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kim Ryan B. Macaroncio (BSIT-NS-2A-T). All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

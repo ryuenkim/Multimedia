@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-Minute Video Rotoscope Project - Multimedia Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Page Background Video -->
+    <video id="page-bg-video" class="page-bg-video" autoplay muted loop playsinline>
+        <source src="videos/bg12.mp4" type="video/mp4">
+    </video>
+
+    <!-- Floating Animated Shapes -->
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo-icon">[M]</span>
+                <span class="brand-text">Multimedia Portfolio</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Rotoscope Video Project -->
+    <section class="project-detail">
+        <div class="container">
+            <h1 class="project-detail-title">1-minute Video Rotoscope</h1>
+            <p class="project-detail-description">
+                A frame-by-frame animation created using the tracing technique with an auto-brush tool in Adobe After Effects.
+            </p>
+            <div class="tech-tags">
+                <span class="tag-blue">Adobe After Effects</span>
+                <span class="tag-blue">Adobe Premiere Pro</span>
+                <span class="tag-blue">Capcut</span>
+            </div>
+
+            <!-- Video Preview -->
+            <div style="position: relative; width: 100%; max-width: 900px; margin: 40px auto; background: #000; border-radius: 12px; overflow: hidden; border: 2px solid #00d4ff; box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);">
+                <video style="width: 100%; height: auto; display: block;" autoplay muted loop controls>
+                    <source src="roto/kim1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div style="text-align: center; margin-top: 15px;">
+                <a href="https://youtu.be/cZaxilmhwiU" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">Watch on YouTube</a>
+            </div>
+
+            <!-- Before and After Section -->
+            <div style="margin-top: 80px; margin-bottom: 80px;">
+                <h2 style="text-align: center; font-size: 2.2rem; font-weight: 700; margin-bottom: 50px; background: linear-gradient(135deg, #00d4ff, #b537f2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Before & After Comparison</h2>
+                
+                <div style="max-width: 900px; margin: 0 auto; background: #000; border-radius: 12px; overflow: hidden; border: 2px solid #b537f2; box-shadow: 0 0 30px rgba(181, 55, 242, 0.3);">
+                    <video style="width: 100%; height: auto; display: block;" autoplay muted loop>
+                        <source src="roto/hhgg.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Weekly Progress Gallery -->
+            <div style="margin-top: 60px;">
+                <h2 style="text-align: center; font-size: 2.2rem; font-weight: 700; margin-bottom: 50px; background: linear-gradient(135deg, #00d4ff, #b537f2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Weekly Progress</h2>
+                
+                <div class="roto-gallery">
+                    <!-- Week 1 -->
+                    <div class="roto-card">
+                        <div class="roto-video-container">
+                            <video autoplay muted loop width="100%" height="100%">
+                                <source src="roto/A1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="roto-card-overlay"></div>
+                        </div>
+                        <div class="roto-card-content">
+                            <h3 class="roto-card-title">Week 1 Progress</h3>
+                        </div>
+                    </div>
+
+                    <!-- Week 2 -->
+                    <div class="roto-card">
+                        <div class="roto-video-container">
+                            <video autoplay muted loop width="100%" height="100%">
+                                <source src="roto/A2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="roto-card-overlay"></div>
+                        </div>
+                        <div class="roto-card-content">
+                            <h3 class="roto-card-title">Week 2 Progress</h3>
+                        </div>
+                    </div>
+
+                    <!-- Week 3 -->
+                    <div class="roto-card">
+                        <div class="roto-video-container">
+                            <video autoplay muted loop width="100%" height="100%">
+                                <source src="roto/A3.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="roto-card-overlay"></div>
+                        </div>
+                        <div class="roto-card-content">
+                            <h3 class="roto-card-title">Week 3 Progress</h3>
+                        </div>
+                    </div>
+
+                    <!-- Week 4 -->
+                    <div class="roto-card">
+                        <div class="roto-video-container">
+                            <video autoplay muted loop width="100%" height="100%">
+                                <source src="roto/A4.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="roto-card-overlay"></div>
+                        </div>
+                        <div class="roto-card-content">
+                            <h3 class="roto-card-title">Week 4 Progress</h3>
+                        </div>
+                    </div>
+
+                    <!-- Week 5 -->
+                    <div class="roto-card">
+                        <div class="roto-video-container">
+                            <video autoplay muted loop width="100%" height="100%">
+                                <source src="roto/A5.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="roto-card-overlay"></div>
+                        </div>
+                        <div class="roto-card-content">
+                            <h3 class="roto-card-title">Week 5 Progress</h3>
+                        </div>
+                    </div>
+
+                    <!-- Week 6 -->
+                    <div class="roto-card">
+                        <div class="roto-video-container">
+                            <video autoplay muted loop width="100%" height="100%">
+                                <source src="roto/A6.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="roto-card-overlay"></div>
+                        </div>
+                        <div class="roto-card-content">
+                            <h3 class="roto-card-title">Week 6 Progress</h3>
+                        </div>
+                    </div>
+
+                    <!-- Week 7 -->
+                    <div class="roto-card">
+                        <div class="roto-video-container">
+                            <video autoplay muted loop width="100%" height="100%">
+                                <source src="roto/A7.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="roto-card-overlay"></div>
+                        </div>
+                        <div class="roto-card-content">
+                            <h3 class="roto-card-title">Week 7 Progress</h3>
+                        </div>
+                    </div>
+
+                    <!-- Week 8 -->
+                    <div class="roto-card">
+                        <div class="roto-video-container">
+                            <video autoplay muted loop width="100%" height="100%">
+                                <source src="roto/A8.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="roto-card-overlay"></div>
+                        </div>
+                        <div class="roto-card-content">
+                            <h3 class="roto-card-title">Week 8 Progress</h3>
+                        </div>
+                    </div>
+
+                    <!-- Week 9 -->
+                    <div class="roto-card">
+                        <div class="roto-video-container">
+                            <video autoplay muted loop width="100%" height="100%">
+                                <source src="roto/A9.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="roto-card-overlay"></div>
+                        </div>
+                        <div class="roto-card-content">
+                            <h3 class="roto-card-title">Week 9 Progress</h3>
+                        </div>
+                    </div>
+
+                    <!-- Week 10 -->
+                    <div class="roto-card">
+                        <div class="roto-video-container">
+                            <video autoplay muted loop width="100%" height="100%">
+                                <source src="roto/A10.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="roto-card-overlay"></div>
+                        </div>
+                        <div class="roto-card-content">
+                            <h3 class="roto-card-title">Week 10 Progress</h3>
+                        </div>
+                    </div>
+
+                    <!-- Week 11 -->
+                    <div class="roto-card">
+                        <div class="roto-video-container">
+                            <video autoplay muted loop width="100%" height="100%">
+                                <source src="roto/A11.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="roto-card-overlay"></div>
+                        </div>
+                        <div class="roto-card-content">
+                            <h3 class="roto-card-title">Week 11 Progress</h3>
+                        </div>
+                    </div>
+
+                    <!-- Week 12 -->
+                    <div class="roto-card">
+                        <div class="roto-video-container">
+                            <video autoplay muted loop width="100%" height="100%">
+                                <source src="roto/A12.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="roto-card-overlay"></div>
+                        </div>
+                        <div class="roto-card-content">
+                            <h3 class="roto-card-title">Week 12 Progress</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Description Section -->
+            <div style="margin-top: 80px; padding: 40px 0; border-top: 1px solid #444;">
+                <h3 style="margin-bottom: 20px;">Project Description</h3>
+                <p>Video rotoscoping is a technique where artists trace over footage frame by frame to isolate subjects or create visual effects. It's commonly used for background removal, motion tracking, and stylized animation.</p>
+
+                <h3 style="margin-top: 30px; margin-bottom: 20px;">Step-by-Step Process</h3>
+                <ol>
+                    <li><strong>Select Source Material:</strong> Choose high-quality video with clear subject-background contrast and interesting movement patterns.</li>
+                    <li><strong>Cut the Video into 5-Second Clips:</strong> Use CapCut to split the selected video into 5-second segments for easier editing.</li>
+                    <li><strong>Create a New Composition:</strong> In After Effects, create a separate 5-second composition for each clip segment.</li>
+                    <li><strong>Trace Each Layer:</strong> Import the subject with rigorously hand-drawn rotoscope paths.</li>
+                    <li><strong>Add Fill Colors to Layers:</strong> Apply solid color fills to each isolated layer components.</li>
+                    <li><strong>Render All Compositions:</strong> Export each 5-second composition through the Render Queue with consistent settings.</li>
+                </ol>
+
+                <p style="margin-top: 30px; font-style: italic; color: #888;">
+                    <strong>Disclaimer:</strong> This video was created for academic purposes only.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to top">Top</button>
+
+    <!-- Footer -->
+    <footer class="footer-fixed">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Follow</h4>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank" title="LinkedIn"><img src="../icons/icons8-linkedin-50 (1).png" alt="LinkedIn" style="width: 24px; height: 24px;"></a>
+                        <a href="https://github.com" target="_blank" title="GitHub"><img src="../icons/icons8-github-50 (1).png" alt="GitHub" style="width: 24px; height: 24px;"></a>
+                        <a href="https://instagram.com" target="_blank" title="Instagram"><img src="../icons/icons8-instagram-logo-50.png" alt="Instagram" style="width: 24px; height: 24px;"></a>
+                        <a href="mailto:contact@example.com" title="Email"><img src="../icons/icons8-email-50.png" alt="Email" style="width: 24px; height: 24px;"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kim Ryan B. Macaroncio (BSIT-NS-2A-T). All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

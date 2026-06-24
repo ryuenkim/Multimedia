@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Solar System Project - Multimedia Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Page Background Video -->
+    <video id="page-bg-video" class="page-bg-video" autoplay muted loop playsinline>
+        <source src="videos/bg12.mp4" type="video/mp4">
+    </video>
+
+    <!-- Floating Animated Shapes -->
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo-icon">[M]</span>
+                <span class="brand-text">Multimedia Portfolio</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 3D Solar System Project -->
+    <section class="project-detail">
+        <div class="container">
+            <h1 class="project-detail-title">3D Solar System</h1>
+            <p class="project-detail-description">
+                A dynamic 3D solar system animation created in Blender, utilizing Python scripting (v3.1) in the Scripting tab for procedural automation and precise celestial motion.
+            </p>
+            <div class="tech-tags">
+                <span class="tag-blue">Blender</span>
+                <span class="tag-blue">3D Modeling</span>
+                <span class="tag-blue">Python Script</span>
+            </div>
+            
+            <!-- Interactive Sections -->
+            <div style="margin-top: 60px;">
+                <!-- Planetary Tour Section -->
+                <h3 style="margin-bottom: 20px;">Planetary Tour (3 secs each planet)</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 30px;">Smooth transitions between each planet displaying planet information.</p>
+                
+                <!-- 3D Solar System Overview Card -->
+                <div class="celestial-card celestial-card-featured" style="margin-bottom: 60px;">
+                    <div class="celestial-header">
+                        <h4>3D Solar System Overview</h4>
+                    </div>
+                    <div class="celestial-video-container">
+                        <video autoplay muted loop playsinline class="portrait-video">
+                            <source src="videos/finalsolar.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="celestial-youtube-link">
+                        <a href="https://youtu.be/lRlWZawGTu8" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">Watch on YouTube</a>
+                    </div>
+                    <div class="celestial-info">
+                        <p><strong>Full Render:</strong> 1 minute</p>
+                        <p><strong>Resolution:</strong> 1920x1080 @ 24fps</p>
+                        <p><strong>Render Time:</strong> 1 hour</p>
+                        <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 10px;">Complete 3D animated solar system showing all planets in their orbits with realistic motion and camera movements.</p>
+                    </div>
+                </div>
+                
+                <!-- Celestial Bodies & Orbital Dynamics Grid -->
+                <h2 style="text-align: center; margin: 60px 0 40px; font-size: 2.2rem; background: linear-gradient(135deg, var(--primary-color), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Celestial Bodies & Orbital Dynamics</h2>
+                
+                <!-- Calculator Section -->
+                <div class="calculator-section" style="margin-bottom: 60px; padding: 40px; background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(181, 55, 242, 0.05)); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 16px;">
+                    <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.8rem;">Calculate Time & Motion in the Solar System</h3>
+                    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem;">Enter Earth years to see orbital periods and revolutions for all planets</p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                        <input type="number" id="earth-years" placeholder="Enter Earth years (or one age, revolutions, orbital periods, and distances for all planets)" style="padding: 12px 20px; background: rgba(26, 31, 58, 0.8); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 8px; color: white; font-size: 1rem; font-family: 'Poppins', sans-serif; min-width: 300px; max-width: 500px;" />
+                        <button id="calculate-btn" style="padding: 12px 30px; background: var(--primary-color); border: none; border-radius: 8px; color: #0a0e27; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-family: 'Poppins', sans-serif; font-size: 1rem;">Calculate</button>
+                    </div>
+                    <div id="calculation-results" style="margin-top: 30px; display: none;">
+                        <div id="results-content"></div>
+                    </div>
+                </div>
+                
+                <div class="celestial-grid">
+                    <!-- Sun -->
+                    <div class="celestial-card planet-sun">
+                        <div class="orbit-badge">#1</div>
+                        <div class="celestial-header">
+                            <h4>Sun</h4>
+                        </div>
+                        <div class="celestial-video-container">
+                            <video autoplay muted loop playsinline class="portrait-video portrait-video-sun">
+                                <source src="videos/sun.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="celestial-youtube-link">
+                            <a href="https://youtu.be/jSca2nt39JQ" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">Watch on YouTube</a>
+                        </div>
+                        <div class="celestial-info">
+                            <p><strong>Age:</strong> 4.6 billion years</p>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 10px;">The center of our solar system, the Sun contains 99.86% of the solar system's mass and provides all energy for life on Earth.</p>
+                        </div>
+                    </div>
+
+                    <!-- Mercury -->
+                    <div class="celestial-card planet-mercury">
+                        <div class="orbit-badge">#2</div>
+                        <div class="celestial-header">
+                            <h4>Mercury</h4>
+                        </div>
+                        <div class="celestial-video-container">
+                            <video autoplay muted loop playsinline class="portrait-video portrait-video-mercury">
+                                <source src="videos/mercury.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="celestial-youtube-link">
+                            <a href="https://youtu.be/pupdj_kPmv0" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">Watch on YouTube</a>
+                        </div>
+                        <div class="celestial-info">
+                            <p><strong>Revolutions:</strong> 4.15</p>
+                            <p><strong>Orbital Period:</strong> 88 Earth days</p>
+                            <p><strong>Distance from Sun:</strong> 57.9 million km</p>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 10px;">The smallest and innermost planet, Mercury has extreme temperature variations and a surface scarred by countless impact craters.</p>
+                        </div>
+                    </div>
+
+                    <!-- Venus -->
+                    <div class="celestial-card planet-venus">
+                        <div class="orbit-badge">#3</div>
+                        <div class="celestial-header">
+                            <h4>Venus</h4>
+                        </div>
+                        <div class="celestial-video-container">
+                            <video autoplay muted loop playsinline class="portrait-video portrait-video-venus">
+                                <source src="videos/venus.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="celestial-youtube-link">
+                            <a href="https://youtu.be/FvnpeMqs4Us" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">🔗 Watch on YouTube</a>
+                        </div>
+                        <div class="celestial-info">
+                            <p><strong>Atmosphere:</strong> Carbon Dioxide</p>
+                            <p><strong>Temperature:</strong> 465°C (hottest planet)</p>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 10px;">The hottest planet in our solar system with a thick, toxic atmosphere and a surface completely covered in volcanic features.</p>
+                        </div>
+                    </div>
+
+                    <!-- Earth -->
+                    <div class="celestial-card planet-earth">
+                        <div class="orbit-badge">#4</div>
+                        <div class="celestial-header">
+                            <h4>Earth</h4>
+                        </div>
+                        <div class="celestial-video-container">
+                            <video autoplay muted loop playsinline class="portrait-video portrait-video-earth">
+                                <source src="videos/earth.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="celestial-youtube-link">
+                            <a href="https://youtu.be/4PE8NaW3E8w" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">🔗 Watch on YouTube</a>
+                        </div>
+                        <div class="celestial-info">
+                            <p><strong>Moons:</strong> 1 (The Moon)</p>
+                            <p><strong>Orbital Period:</strong> 365.25 days</p>
+                            <p><strong>Distance from Sun:</strong> 149.6 million km (1 AU)</p>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 10px;">Our home planet, the only known world to harbor life with its perfect conditions for water and diverse ecosystems.</p>
+                        </div>
+                    </div>
+
+                    <!-- Moon -->
+                    <div class="celestial-card planet-moon">
+                        <div class="orbit-badge">#5</div>
+                        <div class="celestial-header">
+                            <h4>Moon</h4>
+                        </div>
+                        <div class="celestial-video-container">
+                            <video autoplay muted loop playsinline class="portrait-video portrait-video-moon">
+                                <source src="videos/moon.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="celestial-youtube-link">
+                            <a href="https://youtu.be/3Cduf2PFoIA" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">🔗 Watch on YouTube</a>
+                        </div>
+                        <div class="celestial-info">
+                            <p><strong>Diameter:</strong> 3,474 km</p>
+                            <p><strong>Orbital Period:</strong> 27.3 Earth days</p>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 10px;">Earth's natural satellite, responsible for tides and plays a crucial role in Earth's climate and life cycles.</p>
+                        </div>
+                    </div>
+
+                    <!-- Mars -->
+                    <div class="celestial-card planet-mars">
+                        <div class="orbit-badge">#6</div>
+                        <div class="celestial-header">
+                            <h4>Mars</h4>
+                        </div>
+                        <div class="celestial-video-container">
+                            <video autoplay muted loop playsinline class="portrait-video">
+                                <source src="videos/mars.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="celestial-youtube-link">
+                            <a href="https://youtu.be/pU6AsExaDgQ" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">Watch on YouTube</a>
+                        </div>
+                        <div class="celestial-info">
+                            <p><strong>Color:</strong> Red (from iron oxide)</p>
+                            <p><strong>Orbital Period:</strong> 687 Earth days</p>
+                            <p><strong>Distance from Sun:</strong> 227.9 million km</p>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 10px;">The red planet, a primary target for human exploration with evidence of past water and potential for future colonies.</p>
+                        </div>
+                    </div>
+
+                    <!-- Jupiter -->
+                    <div class="celestial-card planet-jupiter">
+                        <div class="orbit-badge">#7</div>
+                        <div class="celestial-header">
+                            <h4>Jupiter</h4>
+                        </div>
+                        <div class="celestial-video-container">
+                            <video autoplay muted loop playsinline class="portrait-video">
+                                <source src="videos/jupiter.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="celestial-youtube-link">
+                            <a href="https://youtu.be/D3hjEoG936U" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">Watch on YouTube</a>
+                        </div>
+                        <div class="celestial-info">
+                            <p><strong>Size:</strong> 11 times wider than Earth</p>
+                            <p><strong>Moons:</strong> 95+ known moons</p>
+                            <p><strong>Notable Feature:</strong> Great Red Spot (massive storm)</p>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 10px;">The largest planet, a gas giant with intense storms and a powerful magnetic field, serving as a protector of the inner planets.</p>
+                        </div>
+                    </div>
+
+                    <!-- Saturn -->
+                    <div class="celestial-card planet-saturn">
+                        <div class="orbit-badge">#8</div>
+                        <div class="celestial-header">
+                            <h4>Saturn</h4>
+                        </div>
+                        <div class="celestial-video-container">
+                            <video autoplay muted loop playsinline class="portrait-video">
+                                <source src="videos/saturn.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="celestial-youtube-link">
+                            <a href="https://youtu.be/lddh3OCdRPI" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">Watch on YouTube</a>
+                        </div>
+                        <div class="celestial-info">
+                            <p><strong>Rings:</strong> Prominent ring system</p>
+                            <p><strong>Moons:</strong> 146+ known moons</p>
+                            <p><strong>Notable Moon:</strong> Titan (has methane lakes)</p>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 10px;">Known for its spectacular ring system, Saturn is a gas giant with diverse moons and fascinating atmospheric dynamics.</p>
+                        </div>
+                    </div>
+
+                    <!-- Uranus -->
+                    <div class="celestial-card planet-uranus">
+                        <div class="orbit-badge">#9</div>
+                        <div class="celestial-header">
+                            <h4>Uranus</h4>
+                        </div>
+                        <div class="celestial-video-container">
+                            <video autoplay muted loop playsinline class="portrait-video">
+                                <source src="videos/uranus.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="celestial-youtube-link">
+                            <a href="https://youtu.be/8KWs7NqEYwU" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">Watch on YouTube</a>
+                        </div>
+                        <div class="celestial-info">
+                            <p><strong>Rotation:</strong> Rotates on its side (98° tilt)</p>
+                            <p><strong>Moons:</strong> 27+ known moons</p>
+                            <p><strong>Color:</strong> Cyan/blue from methane atmosphere</p>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 10px;">An ice giant with a unique axial tilt, tilted 98° from vertical, making it the most tilted planet in our solar system.</p>
+                        </div>
+                    </div>
+
+                    <!-- Neptune -->
+                    <div class="celestial-card planet-neptune">
+                        <div class="orbit-badge">#10</div>
+                        <div class="celestial-header">
+                            <h4>Neptune</h4>
+                        </div>
+                        <div class="celestial-video-container">
+                            <video autoplay muted loop playsinline class="portrait-video">
+                                <source src="videos/neptune.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="celestial-youtube-link">
+                            <a href="https://youtu.be/2VLWfN_2TLY" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">Watch on YouTube</a>
+                        </div>
+                        <div class="celestial-info">
+                            <p><strong>Winds:</strong> Fastest in solar system (2,100 km/h)</p>
+                            <p><strong>Color:</strong> Deep blue from methane</p>
+                            <p><strong>Orbital Period:</strong> 165 Earth years</p>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 10px;">The windiest planet and farthest from the Sun, Neptune has intense storms and a dynamic atmosphere despite receiving minimal solar energy.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pluto -->
+                    <div class="celestial-card planet-pluto">
+                        <div class="orbit-badge">#11</div>
+                        <div class="celestial-header">
+                            <h4>Pluto</h4>
+                        </div>
+                        <div class="celestial-video-container">
+                            <video autoplay muted loop playsinline class="portrait-video">
+                                <source src="videos/pluto.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="celestial-youtube-link">
+                            <a href="https://youtu.be/dsavFjeBGFA" target="_blank" style="color: var(--primary-color); text-decoration: none; font-size: 0.9rem;">Watch on YouTube</a>
+                        </div>
+                        <div class="celestial-info">
+                            <p><strong>Classification:</strong> Dwarf Planet</p>
+                            <p><strong>Diameter:</strong> 2,377 km</p>
+                            <p><strong>Orbital Period:</strong> 248 Earth years</p>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 10px;">Once considered the ninth planet, Pluto is now classified as a dwarf planet located in the Kuiper Belt, with a heart-shaped region and five known moons.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Project Details -->
+            <div class="project-details-grid">
+                <div>
+                    <h3>Tools Used</h3>
+                    <ul>
+                        <li>Blender 3.1 for 3D modeling and animation</li>
+                        <li>Python Scripting for procedural generation and automation</li>
+                    </ul>
+
+                    <h3>Render Information</h3>
+                    <ul>
+                        <li>Render Time: Approximately 1 hour</li>
+                        <li>Resolution: 1920x1080 at 24fps</li>
+                        <li>Total Frames: 2760 (1 minute animation)</li>
+                    </ul>
+
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>Procedurally generated solar system with almost relative sizes</li>
+                        <li>Realistic orbital mechanics at almost relative speeds</li>
+                        <li>Dynamic camera movements assuming friction between planets</li>
+                        <li>Detailed planetary textures and atmospheric effects</li>
+                        <li>Automated informational displays for each planet</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Texture Materials</h3>
+                    <ul>
+                        <li>High resolution planetary textures sourced from NASA Science Texture Library</li>
+                    </ul>
+
+                    <h3>Python Scripts for Sun and Each Planets</h3>
+                    <ul>
+                        <li>Python Scripts for Sun and Each Planets</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid #444;">
+                <h3>Animation Sequence</h3>
+                
+                <h4>Opening Sequence (0-3s)</h4>
+                <p>Camera zooms from sun into Mercury, establishing the scale and style of the animation.</p>
+
+                <h4>Planetary Tour (3 secs each planet)</h4>
+                <p>Smooth transitions between each planet (Mercury to Pluto) displaying planet name.</p>
+
+                <h4>Solar System Overview (1 minute)</h4>
+                <p>Camera zooms out to show the complete solar system with all planets orbiting the sun, demonstrating their relative positions and speeds.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to top">Top</button>
+
+    <!-- Footer -->
+    <footer class="footer-fixed">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Follow</h4>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank" title="LinkedIn"><img src="../icons/icons8-linkedin-50 (1).png" alt="LinkedIn" style="width: 24px; height: 24px;"></a>
+                        <a href="https://github.com" target="_blank" title="GitHub"><img src="../icons/icons8-github-50 (1).png" alt="GitHub" style="width: 24px; height: 24px;"></a>
+                        <a href="https://instagram.com" target="_blank" title="Instagram"><img src="../icons/icons8-instagram-logo-50.png" alt="Instagram" style="width: 24px; height: 24px;"></a>
+                        <a href="mailto:contact@example.com" title="Email"><img src="../icons/icons8-email-50.png" alt="Email" style="width: 24px; height: 24px;"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kim Ryan B. Macaroncio (BSIT-NS-2A-T). All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
