@@ -61,7 +61,7 @@ M&A/
 - Skills and expertise
 - Technical proficiencies
 - Education information
-- Creative philosophy
+ 
 
 ## Technologies Used
 

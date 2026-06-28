@@ -276,7 +276,7 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -2106,10 +2106,25 @@ section {
 
 .celestial-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
+    grid-template-columns: repeat(3, minmax(360px, 1fr));
+    gap: 2rem;
     margin: 40px 0;
     animation: slideInUp 0.8s ease-out 0.3s backwards;
+}
+
+/* Responsive adjustments for celestial grid */
+@media (max-width: 1400px) {
+    .celestial-grid {
+        grid-template-columns: repeat(2, minmax(320px, 1fr));
+        gap: 1.75rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .celestial-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
 }
 
 .celestial-card {
@@ -2318,17 +2333,18 @@ section {
 .celestial-video-container {
     width: 100%;
     position: relative;
-    margin-bottom: 15px;
-    border-radius: 8px;
+    margin-bottom: 18px;
+    border-radius: 10px;
     overflow: hidden;
-    border: 1px solid rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.12);
     z-index: 2;
-    aspect-ratio: 16/9;
+    aspect-ratio: 4/3;
+    min-height: 220px;
     background: var(--dark-bg-alt);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.4s ease;
+    transition: all 0.35s ease;
 }
 
 .celestial-card:hover .celestial-video-container {
@@ -2339,14 +2355,22 @@ section {
 .portrait-video {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 8px;
     display: block;
-    transition: transform 0.4s ease;
+    transition: transform 0.35s ease, filter 0.35s ease;
 }
 
 .celestial-card:hover .portrait-video {
-    transform: scale(1.02);
+    transform: scale(1.04);
+    filter: brightness(1.05) saturate(1.05);
+}
+
+/* Larger video containers on wide screens */
+@media (min-width: 1400px) {
+    .celestial-video-container {
+        min-height: 300px;
+    }
 }
 
 .portrait-video-sun {
@@ -2758,6 +2782,144 @@ section {
 
 .breadcrumb span {
     color: var(--text-secondary);
+}
+
+/* ===========================
+   Script Panel (Python code embed)
+   =========================== */
+.script-panel {
+    margin: 40px 0 60px;
+}
+.script-title {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 14px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.script-card {
+    background: linear-gradient(180deg, rgba(10,14,39,0.6), rgba(10,14,39,0.5));
+    border: 1px solid rgba(0,212,255,0.12);
+    padding: 20px;
+    border-radius: 10px;
+}
+.script-intro h4 {
+    color: #ff4fc1;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    font-weight: 800;
+}
+.script-intro p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+}
+.script-box {
+    background: #0b1220;
+    border: 1px solid rgba(255,255,255,0.03);
+    border-radius: 8px;
+    padding: 12px;
+    color: #dbeafe;
+}
+.script-box pre {
+    margin: 0;
+    max-height: 320px;
+    overflow: auto;
+    padding-right: 12px;
+    font-family: Menlo, Monaco, 'Courier New', monospace;
+    font-size: 0.8rem;
+    line-height: 1.25rem;
+    color: #d1e8ff;
+}
+.code-toolbar {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+.btn-code {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-purple));
+    color: #061028;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.btn-code.btn-outline {
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid rgba(0,212,255,0.18);
+}
+.btn-code:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,212,255,0.12);
+}
+
+/* Planetary resources styles */
+.planetary-resources {
+    margin: 40px 0 80px;
+}
+.resources-container {
+    display: flex;
+    gap: 30px;
+    flex-direction: column; /* stack the resource columns vertically */
+    align-items: stretch;
+}
+.resources-column {
+    width: 100%;
+}
+.resources-column h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+.resources-sub {
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+.resource-main-link {
+    display: inline-block;
+    margin-bottom: 14px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+}
+.resource-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* single full-width folder card */
+    gap: 12px;
+}
+.resource-card {
+    background: rgba(11,18,32,0.75);
+    padding: 18px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(0,212,255,0.09);
+}
+.resource-card strong {
+    color: #dbeafe;
+}
+.resource-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-purple));
+    border: none;
+    color: #061028;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+@media (max-width: 1000px) {
+    .resources-container { flex-direction: column; }
+    .resource-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    .resource-card { padding: 14px; }
 }
 
 /* ===========================

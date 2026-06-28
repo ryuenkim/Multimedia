@@ -554,15 +554,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Planet orbital data (years per orbit around the sun)
     const planets = {
-        'Mercury': { orbitalPeriod: 0.241, distance: 57.9, moons: 0, icon: '☿️' },
-        'Venus': { orbitalPeriod: 0.615, distance: 108.2, moons: 0, icon: '♀️' },
-        'Earth': { orbitalPeriod: 1.0, distance: 149.6, moons: 1, icon: '♁️' },
-        'Mars': { orbitalPeriod: 1.881, distance: 227.9, moons: 2, icon: '♂️' },
-        'Jupiter': { orbitalPeriod: 11.862, distance: 778.5, moons: 95, icon: '♃️' },
-        'Saturn': { orbitalPeriod: 29.457, distance: 1434.0, moons: 146, icon: '♄️' },
-        'Uranus': { orbitalPeriod: 84.011, distance: 2871.0, moons: 27, icon: '♅️' },
-        'Neptune': { orbitalPeriod: 164.793, distance: 4495.1, moons: 16, icon: '♆️' },
-        'Pluto': { orbitalPeriod: 247.94, distance: 5906.4, moons: 5, icon: '♇️' }
+        'Mercury': { orbitalPeriod: 0.241, distance: 57.9, moons: 0 },
+        'Venus': { orbitalPeriod: 0.615, distance: 108.2, moons: 0 },
+        'Earth': { orbitalPeriod: 1.0, distance: 149.6, moons: 1 },
+        'Mars': { orbitalPeriod: 1.881, distance: 227.9, moons: 2 },
+        'Jupiter': { orbitalPeriod: 11.862, distance: 778.5, moons: 95 },
+        'Saturn': { orbitalPeriod: 29.457, distance: 1434.0, moons: 146 },
+        'Uranus': { orbitalPeriod: 84.011, distance: 2871.0, moons: 27 },
+        'Neptune': { orbitalPeriod: 164.793, distance: 4495.1, moons: 16 },
+        'Pluto': { orbitalPeriod: 247.94, distance: 5906.4, moons: 5 }
     };
 
     if (calculateBtn && earthYearsInput) {
@@ -584,7 +584,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 html += `
                     <div style="border-left-width: 4px; border-left-style: solid; transition: all 0.3s ease; padding: 16px;">
                         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                            <span style="font-size: 1.4rem;">${data.icon}</span>
                             <strong style="font-size: 1.1rem;">${planet}</strong>
                         </div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.9rem;">
